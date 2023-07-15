@@ -8,6 +8,7 @@ import 'package:weather_app/constant.dart';
 import 'package:weather_app/model/fetcher.dart';
 import 'package:weather_app/model/weather_model.dart';
 import 'package:weather_app/view/home/components/card.dart';
+import 'package:weather_app/view/page/details_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -45,7 +46,7 @@ class _HomeViewState extends State<HomeView> {
   
   @override
   Widget build(BuildContext context) {
-    var test = weatherData!.cod;
+    // var test = weatherData!.cod;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -65,7 +66,13 @@ class _HomeViewState extends State<HomeView> {
                   // padding: EdgeInsets.symmetric(vertical: cPadding/4),
                   itemBuilder: ((context, index) {
                     ListElement listElement = weatherData!.list[index];
-                    return CardView(listofElement: listElement);
+                    return CardView(
+                      listofElement: listElement,
+                      press: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(builder: ((context) => DetailsView(listElement: listElement,))));
+                      },);
                   }),
                   separatorBuilder: (context, index) {
                     return Container(
