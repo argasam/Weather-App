@@ -1,11 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:transparent_image/transparent_image.dart';
 import 'package:weather_app/constant.dart';
 import 'package:weather_app/model/weather_model.dart';
 import 'package:weather_app/view/home/components/function.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
+import 'dart:io';
+import 'dart:ui' as ui;
 
 class CardView extends StatefulWidget {
   final ListElement listofElement;
@@ -24,6 +29,8 @@ class CardView extends StatefulWidget {
 
 class _CardViewState extends State<CardView> {
   
+
+
   @override
   Widget build(BuildContext context) {
     ListElement listElement = widget.listofElement;
@@ -32,13 +39,15 @@ class _CardViewState extends State<CardView> {
     return GestureDetector(
       onTap: press,
       child: Container(
-        color: Colors.blue,
+        
         child: Row(
           children: [
             Container(
-              height: 100, width: 100, color: Colors.indigoAccent,
-              child: Image(
-                image: NetworkImage('https://openweathermap.org/img/wn/${listElement.weather[0].icon}@2x.png')),
+              height: 100, width: 100,
+              child: 
+              FadeInImage.memoryNetwork(
+                      placeholder: kTransparentImage,
+                      image: 'https://openweathermap.org/img/wn/${listElement.weather[0].icon}@2x.png',)
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
