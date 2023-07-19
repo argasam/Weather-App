@@ -28,7 +28,7 @@ git pull https://github.com/argasam/Weather-App.git
 3. To Run the code, Do the command from your terminal
 
 ```
-> flutter run --dart-define-from-file=api-keys.json
+flutter run --dart-define-from-file=api-keys.json
 ```
 
 4. If you have multiple device, choose one by pressing number provided by the system
