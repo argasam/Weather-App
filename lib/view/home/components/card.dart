@@ -37,9 +37,10 @@ class _CardViewState extends State<CardView> {
     VoidCallback press = widget.press;
     
     return GestureDetector(
+      
       onTap: press,
       child: Container(
-        
+        color: Colors.white,
         child: Row(
           children: [
             Container(

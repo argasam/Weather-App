@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:weather_app/constant.dart';
 import 'package:weather_app/model/weather_model.dart';
 import 'package:weather_app/view/home/home_view.dart';
 
@@ -37,12 +38,9 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   late Future<Map<String, dynamic>> _fetchWeatherData;
 
-  var LATITUDE = "-6.175115064391812";
-  var LONGITUDE = "106.82708842419382";
-  var APIKEY = "a4b9b94e4d2e1882d33fff6d19b08eb1";
-  static const API_KEY = String.fromEnvironment('API_KEYS');
-  static const LATITUDE_KEY = String.fromEnvironment("LATITUDE_KEYS");
-  static const LONGITUDE_KEY = String.fromEnvironment("LONGITUDE_KEYS");
+  static const api_KEY = String.fromEnvironment('API_KEYS');
+  static const latitude_KEY = String.fromEnvironment("LATITUDE_KEYS");
+  static const longitude_KEY = String.fromEnvironment("LONGITUDE_KEYS");
 
   @override
   void initState() {
@@ -52,10 +50,10 @@ class _MainViewState extends State<MainView> {
 
   Future<Map<String, dynamic>> fetchDataFromAPI() async {
     
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 1));
 
     final response = await http.get(Uri.parse(
-        "https://api.openweathermap.org/data/2.5/forecast?lat=${LATITUDE_KEY}&lon=${LONGITUDE_KEY}&appid=${API_KEY}"));
+        "https://api.openweathermap.org/data/2.5/forecast?lat=${latitude_KEY}&lon=${longitude_KEY}&appid=${api_KEY}"));
 
     if (response.statusCode == 200) {
       final jsonData = jsonDecode(response.body);
@@ -76,13 +74,13 @@ class _MainViewState extends State<MainView> {
           future: _fetchWeatherData,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
+              return const Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircularProgressIndicator(),
-                    SizedBox(height: 10,),
-                    Text("Fetcing Weather Data for Weather")
+                    SizedBox(height: cPadding*2,),
+                    Text("Fetcing Weather Data for Monas", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)
                   ],
                 ),
               );

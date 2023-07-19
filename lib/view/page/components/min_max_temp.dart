@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:weather_app/constant.dart';
 
 class MinMax extends StatelessWidget {
@@ -14,9 +12,9 @@ class MinMax extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Text("Temp(${type})", style: TextStyle(fontSize: 15),),
-          SizedBox(height: cPadding/4,),
-          Text(temp, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),)
+          Text("Temp(${type})", style: const TextStyle(fontSize: 15),),
+          const SizedBox(height: cPadding/4,),
+          Text("${temp} °C", style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),)
         ],
       ),
     );

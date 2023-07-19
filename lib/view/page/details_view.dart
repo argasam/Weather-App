@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:weather_app/constant.dart';
 import 'package:weather_app/model/weather_model.dart';
 import 'package:weather_app/view/home/components/function.dart';
@@ -27,15 +25,16 @@ class _DetailsViewState extends State<DetailsView> {
     ListElement listElement = widget.listElement;
     return Scaffold(
         appBar: AppBar(
-          title: Text("Weather Details"),
+          title: const Text("Weather Details"),
         ),
         body: Center(
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.symmetric(vertical: cPadding/2),
+                margin: const EdgeInsets.symmetric(vertical: cPadding/2),
                 child: Column(
                   children: [
+                    const SizedBox(height: 10/2,),
                     Text(DateFormat('EEEEE, MMMM dd, yyyy ').format(listElement.dtTxt).toString(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                     Text(DateFormat('h:mm a').format(listElement.dtTxt).toString(), style: TextStyle(fontSize: 20),),
                   ],
@@ -43,24 +42,24 @@ class _DetailsViewState extends State<DetailsView> {
               ),
               Container(
                 height:150,
-                padding: EdgeInsets.all(cPadding/4),
+                padding: const EdgeInsets.all(cPadding/10),
                 // margin: EdgeInsets.only(bottom: cPadding),
                 child: Container(
-                  padding: EdgeInsets.all(10),  
+                  padding: const EdgeInsets.all(10),  
                   // color: Colors.blueAccent,
-                  width: MediaQuery.of(context).size.width/4*3,
+                  width: MediaQuery.of(context).size.width/5*4,
                   child: Stack(
                     alignment: Alignment.center,
                     
                     children: [
                       Positioned(
-                        left: 25,
-                        child: Text(toCelcius(listElement.main.temp).toStringAsFixed(1) + "°C",
-                        style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),),
+                        left: 10,
+                        child: Text("${toCelcius(listElement.main.temp).toStringAsFixed(1)} °C",
+                        style: const TextStyle(fontSize: 50),),
                       ),
                       Positioned(
-                        right: 10,
-                        top: 7,
+                        right: 1,
+                        top: 10,
                         child: Container(
                           
                           child: FadeInImage.memoryNetwork(
@@ -74,19 +73,19 @@ class _DetailsViewState extends State<DetailsView> {
               ),
               RichText(
                 text: TextSpan(
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black,
                     fontWeight: FontWeight.bold
                   ),
                   children: [
                     TextSpan(text: listElement.weather[0].main.toString()),
-                    TextSpan(text: " ("),
+                    const TextSpan(text: " ("),
                     TextSpan(text: listElement.weather[0].description),
-                    TextSpan(text: ")")
+                    const TextSpan(text: ")")
                   ]
                 )),
-              SizedBox(height: cPadding+5,),
+              const SizedBox(height: cPadding*2,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
