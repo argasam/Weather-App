@@ -12,15 +12,24 @@ To run the app you **need to**:
 
 1. Create your file with random name 
 example: (open your terminal)
-> cd dekstop (Go to desktop folder)
+
+```
+> cd dekstop
 > mkdir weather-app
 > cd weather-app
+```
 
 2. Pull this Github Repository
-> git pull https://github.com/argasam/Weather-App.git
+
+```
+git pull https://github.com/argasam/Weather-App.git
+```
 
 3. To Run the code, Do the command from your terminal
-> flutter run --dart-define-from-file=api-keys.json  
+
+```
+> flutter run --dart-define-from-file=api-keys.json
+```
 
 4. If you have multiple device, choose one by pressing number provided by the system
 
